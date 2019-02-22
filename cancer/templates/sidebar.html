@@ -1,0 +1,39 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'index' %}">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laptop-medical"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">DT Cáncer<sup>2</sup></div>
+    </a>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Home -->
+    <li class="nav-item " id="index">
+      <a class="nav-link" href="{% url 'index' %}">
+        <i class="fas fa-fw fa-heartbeat"></i>
+        <span>Detección</span></a>
+    </li>
+   
+
+    <!-- Nav Item - Explanation -->
+    <li class="nav-item" id="explanation">
+      <a class="nav-link" href="{% url 'explanation' %}">
+        <i class="fas fa-fw fa-chalkboard"></i>
+        <span>Explicación</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+  </ul>
+  <!-- End of Sidebar -->
+  <script>
+  $("#{{request.resolver_match.url_name}}").addClass('active');
+  </script>

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block title %}
+Explicación
+{% endblock %}
+{% load static %}
+{% block stylesheets %}
+<link href="{% static 'cancer/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Explicación</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7">
+
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#medical" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true"
+                    aria-controls="medical">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-fw fa-book-medical"></i>
+                        Explicación de los datos
+                    </h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse collapse" id="medical" style="">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static 'cancer/img/undraw_doctors_hwty.svg' %}"
+                                alt="">
+                        </div>
+                        <p>
+
+                            La base de datos de cáncer de mama se obtuvo de la <strong>Universidad de Wisconsin</strong>.
+                             Hospitales, Madison del Dr. William H. Wolberg.
+                        </p>
+                        <p>
+
+                             Los atributos 2 a 10 se han utilizado para representar instancias.
+                            Cada instancia tiene una de 2 clases posibles: benigna o maligna.
+
+                        </p>
+                        <h4 class="small font-weight-bold">Los datos estan descritos en la siguiente tabla:</h4>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Atributo</th>
+                                        <th>Descripción</th>
+                                        <th>Dominio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Número de código de muestra número de identificación</td>
+                                        <td>Identificador unico del paciente</td>
+                                        <td>id</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Grueso del grupo </td>
+                                        <td>Las células benignas tienden a agruparse en monocapas, mientras que las
+                                            células cancerosas a menudo se agrupan en multicapas.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Uniformidad del tamaño celular</td>
+                                        <td>Las células cancerosas tienden a variar en tamaño y forma. Es por eso que
+                                            estos parámetros son valiosos para determinar si las células son cancerosas
+                                            o no.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Uniformidad de la forma celular</td>
+                                        <td>Uniformidad del tamaño / forma celular: las células cancerosas tienden a
+                                            variar en tamaño y forma. Es por eso que estos parámetros son valiosos para
+                                            determinar si las células son cancerosas o no.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Adherencia marginal</td>
+                                        <td>Las células normales tienden a permanecer juntas. Las células cancerosas
+                                            tienden a perder esta capacidad. Así que la pérdida de adherencia es un
+                                            signo de malignidad.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Tamaño de célula epitelial única</td>
+                                        <td>Está relacionado con la uniformidad mencionada anteriormente. Las células
+                                            epiteliales que están significativamente agrandadas pueden ser una célula
+                                            maligna.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Núcleos descubiertos</td>
+                                        <td>Este es un término utilizado para los núcleos que no está rodeado por el
+                                            citoplasma (el resto de la célula). </td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Cromatina suave</td>
+                                        <td>Describe una "textura" uniforme del núcleo visto en células benignas. En
+                                            las células cancerosas, la cromatina tiende a ser más gruesa.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Nucleoli normal</td>
+                                        <td>Los nucleolos son pequeñas estructuras que se ven en el núcleo. En las
+                                            células normales, el nucleolo suele ser muy pequeño si es visible. En las
+                                            células cancerosas, los nucleolos se hacen más prominentes y, a veces, hay
+                                            más de ellos.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Mitosis</td>
+                                        <td>El cáncer es esencialmente una enfermedad de la mitosis incontrolada.</td>
+                                        <td>1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Clase</td>
+                                        <td>Clasificación</td>
+                                        <td>(2 para benigno, 4 para maligno)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#dataset" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="true"
+                    aria-controls="dataset">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-fw fa-database"></i>
+                        Dataset
+                    </h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse collapse" id="dataset">
+                    <div class="card-body">
+                        <strong>Número de instancias: </strong> 699 </br>
+                        <strong>Número de atributos: </strong> 10 más el atributo de clase </br>
+                        <strong>Atributos perdidos: </strong> 16 </br>
+                        <strong>Valor Atributos perdidos: </strong> ? </br>
+                        <strong>Valor de reemplazo para atributos perdidos: </strong> -99999 </br>
+                        <strong>Distribución: </strong> </br>
+                        Benigno: 458 (65.5%) </br>
+                        Maligno: 241 (34.5%)
+
+                        </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Accordion -->
+                <a href="#algorithm" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button"
+                    aria-expanded="true" aria-controls="algorithm">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-fw fa-code"></i>
+                        Explicación del algoritmo
+                    </h6>
+                </a>
+                <!-- Card Content - Collapse -->
+                <div class="collapse collapse" id="algorithm">
+                    <div class="card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UqYde-LULfs?rel=0"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+
+{% block javascripts %}
+<script src="{% static 'cancer/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'cancer/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'cancer/js/demo/datatables-demo.js' %}"></script>
+{% endblock %}
