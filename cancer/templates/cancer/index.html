@@ -12,7 +12,6 @@
   
   <!-- Content Row -->
   <div class="row">
-
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
       <div class="card shadow mb-4">
@@ -164,6 +163,8 @@
   {% block javascripts %}
   <script>
     // Set new default font family and font color to mimic Bootstrap's default styling
+    Chart.defaults.global.elements.point.borderWidth = 2;  
+    Chart.defaults.global.elements.point.radius = 3;  
     Chart.defaults.global.defaultFontFamily = 'Nunito',
       '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#858796';
@@ -209,11 +210,26 @@
   {% for p,b in coordb.iterrows %}
     dataBenigno.push({'x': {{b.V1}}, 'y': {{b.V7}}});
   {% endfor %}
+  {% if send %}
+    var point = [];
+    {% for p in point %}
+      point.push({'x': {{forloop.counter  }}, 'y': {{p}}});
+    {% endfor %}
+  {% endif %}
 var ctx = document.getElementById("dist").getContext('2d');
 var scatterChart = new Chart(ctx, {
     type: 'scatter',
     data: {
-        datasets: [{
+        datasets: [
+         {% if send %}
+        {
+          label: 'Diagnóstico',
+          backgroundColor: "#f6c23e",
+          pointStyle: 'circle',
+          data: point
+        },
+        {% endif %}
+        {
             label: 'Maligno',
             borderColor: "#e74a3b",
 				    backgroundColor: "#e74a3b",
@@ -227,6 +243,7 @@ var scatterChart = new Chart(ctx, {
             pointStyle: 'circle',
             data: dataBenigno
         }
+       
         ]
     },
     options: {
@@ -234,7 +251,21 @@ var scatterChart = new Chart(ctx, {
             xAxes: [{
                 type: 'linear',
                 position: 'bottom'
-            }]
+            }],
+            yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						},
+						ticks: {
+							min: 0,
+							max: 10,
+
+							// forces step size to be 5 units
+							stepSize: 2
+						}
+					}]
         },
         legend : {
           position : "bottom",
@@ -244,5 +275,5 @@ var scatterChart = new Chart(ctx, {
         }
     }
 });
-</script>
+</script> 
   {% endblock %}

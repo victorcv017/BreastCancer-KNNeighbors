@@ -13,6 +13,7 @@ def index(request):
     proba = np.array([100, 0])
     send = False
     patient = ""
+    point = 0
     dataset = staticfiles_storage.path('cancer/dataset/breast-cancer-wisconsin.data.txt')
     df = pd.read_csv(dataset, header = None)
     df.columns = ["name" , "V1" , "V2" , "V3", "V4" , "V5" , "V6" , "V7" , "V8" , "V9" , "class"]
@@ -39,12 +40,14 @@ def index(request):
         data["V8"], 
         data["V9"]
         ])
+        point = sample_measure
         sample_measure = sample_measure.reshape(1,-1)
         predict = clf.predict(sample_measure)
         proba = clf.predict_proba(sample_measure)
         proba = proba[0]
         patient = data['name']
         send = True
+
 
     return render(request, 'cancer/index.html' ,{ 
         'accuracy' : accuracy * 100,
@@ -57,6 +60,7 @@ def index(request):
         'patient' : patient,
         'coordb': m[m["class"] == 2],
         "coordm" : m[m["class"] == 4],
+        'point' : point
         })
 
 def explanation(request):
